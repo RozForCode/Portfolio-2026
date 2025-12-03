@@ -11,8 +11,20 @@ export default function Home() {
       <PrismVisual />
 
       <div className={styles.content}>
-        <h1 className={styles.title}>PRISM</h1>
-        <p className={styles.tagline}>Spectrum of Light</p>
+        {/* <h1 className={styles.title}>PRISM</h1>
+        <p className={styles.tagline}>Spectrum of Light</p> */}
+        <h1 className={styles.title}>Navrose Singh Johal</h1>
+
+        <p className={styles.tagline}>Software Development & Network Engineering Student @ Sheridan College</p>
+
+        <p className={styles.subtag}>
+          Turning ideas into reliable, scalable, and user-focused digital experiences.
+        </p>
+
+        <p className={styles.skills}>
+          Full-Stack Development • Unity • Node.js • React • Angular • C# • Azure • MongoDB • Python • Cloud Systems
+        </p>
+
 
         <div className={styles.buttons}>
           <Link href="/timeline">

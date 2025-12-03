@@ -11,7 +11,7 @@
 }
 
 .title {
-    font-size: clamp(4.5rem, 13vw, 11rem);
+    font-size: clamp(3rem, 9vw, 8rem);
     font-weight: 900;
     margin-bottom: 0.5rem;
     letter-spacing: -0.06em;
@@ -23,14 +23,28 @@
     animation: glowPulse 3s ease-in-out infinite alternate;
 }
 
-@keyframes glowPulse {
-    from {
-        filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 80px rgba(138, 43, 226, 0.3));
-    }
+.subtag {
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    font-weight: 300;
+    color: rgba(200, 200, 255, 0.95);
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 15px rgba(138, 43, 226, 0.4), 0 0 25px rgba(138, 43, 226, 0.2);
+    font-style: italic;
+}
 
-    to {
-        filter: drop-shadow(0 0 60px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 120px rgba(0, 191, 255, 0.4));
-    }
+.skills {
+    font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+    font-weight: 300;
+    color: rgba(230, 230, 255, 0.85);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    opacity: 0.85;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(138, 43, 226, 0.25);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 0.75rem;
 }
 
 .tagline {
@@ -41,6 +55,19 @@
     text-transform: uppercase;
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(138, 43, 226, 0.3);
 }
+
+
+@keyframes glowPulse {
+    from {
+        filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 80px rgba(138, 43, 226, 0.3));
+    }
+
+    to {
+        filter: drop-shadow(0 0 60px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 120px rgba(0, 191, 255, 0.4));
+    }
+}
+
+
 
 .buttons {
     display: flex;
