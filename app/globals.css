@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+body,
+#__next {
+  cursor: none !important;
+}
+
+
+.navbar a,
+.navbar button,
+.navbar [role="button"] {
+  cursor: none !important;
+}
+
+a,
+button,
+[role="button"],
+input,
+textarea {
+  cursor: none !important;
+  /* Forces the browser to hide the default hand icon */
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-orchid: var(--orchid);
+  --color-orchid-dark: var(--orchid-dark);
+  --color-cyan: var(--cyan);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --orchid: #da70d6;
+  --orchid-dark: #9932cc;
+  --cyan: #00ffff;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  cursor: none !important;
+  @apply antialiased;
+}
