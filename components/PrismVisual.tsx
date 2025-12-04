@@ -19,8 +19,8 @@ const fragmentShaderSource = `
    
     #define PI 3.14159265359
     #define TAU 6.28318530718
-    #define MAX_STEPS 80
-    #define MAX_DIST 50.0
+    #define MAX_STEPS 40
+    #define MAX_DIST 25.0
     #define SURF_DIST 0.001
    
     float hash(float n) {
@@ -305,9 +305,9 @@ export default function PrismVisual() {
         window.addEventListener('mousemove', handleMouseMove);
 
         const resizeCanvas = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            gl.viewport(0, 0, canvas.width, canvas.height);
+            canvas.width = Math.floor(window.innerWidth / 2);
+            canvas.height = Math.floor(window.innerHeight / 2);
+            gl.viewport(0, 0, canvas.width!, canvas.height!);
         };
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
@@ -326,7 +326,7 @@ export default function PrismVisual() {
             gl.useProgram(program);
 
             if (uTime) gl.uniform1f(uTime, currentTime);
-            if (uResolution) gl.uniform2f(uResolution, canvas.width, canvas.height);
+            if (uResolution) gl.uniform2f(uResolution, canvas!.width!, canvas!.height!);
             if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
 
             const positionLocation = gl.getAttribLocation(program!, 'position');

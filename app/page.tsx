@@ -8,7 +8,7 @@ import styles from "./home.module.css";
 export default function Home() {
   return (
     <main className="min-h-screen w-full overflow-hidden relative bg-black">
-      <PrismVisual />
+      {/* <PrismVisual /> */}
 
       <div className={styles.content}>
         {/* <h1 className={styles.title}>PRISM</h1>
