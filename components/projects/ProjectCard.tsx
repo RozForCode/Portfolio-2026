@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import CustomCursor from "../CustomCursor";
 
 interface ProjectCardProps {
     title: string;
@@ -12,6 +12,9 @@ interface ProjectCardProps {
 
 export function ProjectCard({ title, description, image, tags }: ProjectCardProps) {
     return (
+        <>
+        <CustomCursor/>
+        
         <motion.div
             className="group relative w-full h-[400px] rounded-2xl overflow-hidden cursor-pointer"
             whileHover={{ scale: 1.02 }}
@@ -48,5 +51,6 @@ export function ProjectCard({ title, description, image, tags }: ProjectCardProp
                 <h3 className="text-2xl font-bold text-white">{title}</h3>
             </div>
         </motion.div>
+        </>
     );
 }

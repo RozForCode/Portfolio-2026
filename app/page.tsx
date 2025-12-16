@@ -1,18 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import PrismVisual from "@/components/PrismVisual";
-import GlassButton from "@/components/GlassButton";
+import GlassButton from "@/components/3d/GlassButton";
 import styles from "./home.module.css";
+// import TubesCursor from "@/components/3d/TubesCursor"; //too heavy on performance
+import Laptop3d from "@/components/3d/Laptop3d";
 
 export default function Home() {
   return (
     <main className="min-h-screen w-full overflow-hidden relative bg-black">
-      {/* <PrismVisual /> */}
+      
 
+              {/* <TubesCursor /> */}
+      {/* <Laptop3d /> */}
       <div className={styles.content}>
-        {/* <h1 className={styles.title}>PRISM</h1>
-        <p className={styles.tagline}>Spectrum of Light</p> */}
         <h1 className={styles.title}>Navrose Singh Johal</h1>
 
         <p className={styles.tagline}>Software Development & Network Engineering Student @ Sheridan College</p>
