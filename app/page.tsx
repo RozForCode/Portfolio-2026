@@ -9,7 +9,7 @@ import SkillsGrid from "@/components/SkillsGrid";
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full overflow-hidden relative bg-black">
+    <main className="min-h-screen w-full relative bg-black flex flex-col">
 
 
       {/* <TubesCursor /> */}
@@ -31,7 +31,7 @@ export default function Home() {
 
 
         <div className={styles.buttons}>
-          <SkillsGrid />
+          {/* SkillsGrid moved below hero section */}
           <Link href="/timeline">
             <GlassButton>Timeline</GlassButton>
           </Link>
@@ -40,6 +40,8 @@ export default function Home() {
           </Link>
         </div>
       </div>
+
+      <SkillsGrid />
     </main>
   );
 }
