@@ -93,9 +93,9 @@ const SkillsGrid = () => {
     return (
         <section className="py-20 px-4 md:px-8 bg-transparent min-h-[50vh] flex flex-col items-center justify-center">
             <div className="max-w-7xl w-full">
-                <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+                <h3 className="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
                     SKILLS ARSENAL
-                </h2>
+                </h3>
 
                 <motion.div
                     className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"

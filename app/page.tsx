@@ -15,7 +15,11 @@ export default function Home() {
       {/* <TubesCursor /> */}
       {/* <Laptop3d /> */}
       <div className={styles.content}>
-        <h1 className={styles.title}>Navrose Singh Johal</h1>
+        <div className={styles.titleWrapper}>
+          <h2 className={styles.titleStroke}>Navrose Singh Johal</h2>
+          <h2 className={styles.titleFill}>Navrose Singh Johal</h2>
+        </div>
+
 
         <p className={styles.tagline}>Software Development & Network Engineering Student @ Sheridan College</p>
 
@@ -23,11 +27,6 @@ export default function Home() {
           Turning ideas into reliable, scalable, and user-focused digital experiences.
         </p>
 
-
-
-        <p className={styles.skills}>
-          Full-Stack Development • Unity • Node.js • React • Angular • C# • Azure • MongoDB • Python • Cloud Systems
-        </p>
 
 
         <div className={styles.buttons}>
