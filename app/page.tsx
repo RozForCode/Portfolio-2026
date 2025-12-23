@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import TypingTagline from "@/components/TypingTagline";
 import GlassButton from "@/components/3d/GlassButton";
 import styles from "./home.module.css";
 // import TubesCursor from "@/components/3d/TubesCursor"; //too heavy on performance
@@ -21,7 +22,10 @@ export default function Home() {
         </div>
 
 
-        <p className={styles.tagline}>Software Development & Network Engineering Student @ Sheridan College</p>
+        <TypingTagline
+          text={['Software Development & Network Engineering Student @ Sheridan College']}
+          className={styles.tagline}
+        />
 
         <p className={styles.subtag}>
           Turning ideas into reliable, scalable, and user-focused digital experiences.
