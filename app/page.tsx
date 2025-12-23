@@ -15,6 +15,7 @@ export default function Home() {
 
       {/* <TubesCursor /> */}
       {/* <Laptop3d /> */}
+
       <div className={styles.content}>
         <div className={styles.titleWrapper}>
           <h2 className={styles.titleStroke}>Navrose S. Johal</h2>
@@ -23,13 +24,11 @@ export default function Home() {
 
 
         <TypingTagline
-          text={['Software Development & Network Engineering Student @ Sheridan College']}
+          text={['SDNE @ Sheridan College']}
           className={styles.tagline}
         />
 
-        <p className={styles.subtag}>
-          Turning ideas into reliable, scalable, and user-focused digital experiences.
-        </p>
+
 
 
 
@@ -42,6 +41,18 @@ export default function Home() {
             <GlassButton>Projects</GlassButton>
           </Link>
         </div>
+
+        <p className={styles.subtag}>
+          Building across layers &nbsp;
+          <span className={styles.droppingTexts}>
+            <span>application development</span>
+            <span>game systems</span>
+            <span>services analysis</span>
+            <span>low-level development</span>
+            <span>architecture</span>
+            <span>linux internals</span>
+          </span>
+        </p>
       </div>
 
       <SkillsGrid />
