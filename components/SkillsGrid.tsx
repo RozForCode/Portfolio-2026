@@ -14,6 +14,9 @@ import {
     FaLinux,
     FaCloud,
     FaNetworkWired,
+    FaJava,
+    FaAws,
+    FaDatabase,
 } from "react-icons/fa";
 import {
     SiNextdotjs,
@@ -25,6 +28,9 @@ import {
     SiSharp,
     SiUnrealengine,
     SiKubernetes,
+    SiC,
+    SiCplusplus,
+    SiScala,
 } from "react-icons/si";
 
 import { AppServicePlansWeb } from "@threeveloper/azure-react-icons";
@@ -54,16 +60,22 @@ const skills: Skill[] = [
     { name: "Express", icon: SiExpress, category: "Backend" },
     { name: "MongoDB", icon: SiMongodb, category: "Backend" },
     { name: "REST APIs", icon: FaNetworkWired, category: "Backend" },
+    { name: "Java", icon: FaJava, category: "Backend" },
+    { name: "Scala", icon: SiScala, category: "Backend" },
+    { name: "SQL", icon: FaDatabase, category: "Backend" },
     // Game / Graphics
     { name: "Unity", icon: FaUnity, category: "Game / Graphics" },
     { name: "C#", icon: SiSharp, category: "Game / Graphics" },
     { name: "Unreal Engine", icon: SiUnrealengine, category: "Game / Graphics" },
+    { name: "C++", icon: SiCplusplus, category: "Game / Graphics" },
     // DevOps / Systems
     { name: "Linux", icon: FaLinux, category: "DevOps / Systems" },
     { name: "Docker", icon: FaDocker, category: "DevOps / Systems" },
     { name: "Kubernetes", icon: SiKubernetes, category: "DevOps / Systems" },
     { name: "Azure", icon: AppServicePlansWeb, category: "DevOps / Systems" },
     { name: "Cloud Systems", icon: FaCloud, category: "DevOps / Systems" },
+    { name: "AWS", icon: FaAws, category: "DevOps / Systems" },
+    { name: "C", icon: SiC, category: "DevOps / Systems" },
     // Other
     { name: "Git & GitHub", icon: FaGitAlt, category: "Other" },
     { name: "Python", icon: FaPython, category: "Other" },
