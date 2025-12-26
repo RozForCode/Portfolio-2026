@@ -7,27 +7,43 @@ import { cn } from "@/lib/utils";
 const experiences = [
     {
         year: "2025",
-        title: "Senior Creative Developer",
-        company: "Future Corp",
-        description: "Leading the development of immersive web experiences using WebGL and WebGPU.",
+        period: "Nov 2025 – Present",
+        title: "Technology Team Member",
+        company: "Google Developers Group – Sheridan College",
+        description:
+            "Contribute to developer community initiatives, assist with technical events and workshops, and support student-focused programming and learning activities.",
     },
     {
-        year: "2023",
-        title: "Frontend Engineer",
-        company: "Tech Innovators",
-        description: "Built high-performance React applications and design systems.",
+        year: "2025",
+        period: "Sep 2025 – Dec 2025",
+        title: "Sheridan Student Ambassador",
+        company: "Sheridan College, Brampton, ON",
+        description:
+            "Engage with prospective students, represent Sheridan at on-campus events, support hallway outreaches and booth setups, and answer questions about academic programs and student services.",
     },
     {
-        year: "2021",
-        title: "Web Developer",
-        company: "Digital Agency",
-        description: "Created award-winning websites for various clients.",
+        year: "2025",
+        period: "May 2025 – Aug 2025",
+        title: "Communications Administrator Co-op",
+        company: "Milton Hydro, Milton, ON",
+        description:
+            "Designed and maintained SharePoint intranet sites, supported IT and communications operations, enhanced website functionality, conducted web analysis, created 100+ digital assets, and collaborated on cross-functional projects and company-wide events.",
     },
     {
-        year: "2019",
-        title: "Junior Developer",
-        company: "StartUp Inc",
-        description: "Assisted in backend development and API integration.",
+        year: "2024",
+        period: "Jul 2024 – Oct 2024",
+        title: "Software Engineering Fellow",
+        company: "Headstarter | Remote",
+        description:
+            "Collaborated with senior developers in an Agile environment to deploy full-stack AI projects on Vercel and designed solutions aligned with modern architecture principles for scalability and reliability.",
+    },
+    {
+        year: "2023 - Present",
+        period: "Dec 2023 – Present",
+        title: "Tutor – Programming & STEM",
+        company: "Best Brains, Brampton, ON",
+        description:
+            "Delivered 100+ one-on-one and group tutoring sessions, adapted explanations to different learning styles, and guided students through debugging, coding exercises, and project-based learning.",
     },
 ];
 
@@ -100,7 +116,14 @@ export default function TimelinePage() {
                                         : "left-[-12.5%] md:left-[-13.5%]" // Adjust dot position for right cards
                                 )}
                             />
-                            <span className="text-cyan font-mono text-sm">{exp.year}</span>
+                            <div className="mb-2">
+                                <span className="text-cyan font-mono text-xl font-bold block">{exp.year}</span>
+                                {exp.period && (
+                                    <span className="text-gray-400 text-xs font-mono uppercase tracking-wider block mt-1">
+                                        {exp.period}
+                                    </span>
+                                )}
+                            </div>
                             <h3 className="text-2xl font-bold text-white mt-2">{exp.title}</h3>
                             <h4 className="text-orchid text-lg mb-4">{exp.company}</h4>
                             <p className="text-gray-400">{exp.description}</p>

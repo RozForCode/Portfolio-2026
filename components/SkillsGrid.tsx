@@ -110,14 +110,13 @@ const SkillsGrid = () => {
                 </h3>
 
                 <motion.div
-                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+                    className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-3 sm:gap-4 md:gap-6"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.1 }}
                 >
                     {skills.map((skill, index) => {
-                        // Alternate colors: Even = Cyan, Odd = Purple
                         const isEven = index % 2 === 0;
                         const accentColorClass = isEven ? "text-cyan-400" : "text-purple-500";
                         const borderColorClass = isEven
@@ -133,28 +132,25 @@ const SkillsGrid = () => {
                                 variants={cardVariants}
                                 className="relative group perspective-1000"
                             >
-                                {/* Floating Wrapper */}
                                 <motion.div
                                     animate={floatAnimation}
                                     className={`
-                    h-full p-6 rounded-xl
-                    bg-gray-950/40 backdrop-blur-md
-                    border border-white/10
-                    flex flex-col items-center justify-center gap-4
-                    transition-all duration-300
-                    cursor-pointer
-                    ${borderColorClass}
-                    ${shadowClass}
-                  `}
+                w-full p-2 sm:p-3 rounded-xl
+                bg-gray-900/20 backdrop-blur-md
+                border border-white/10
+                flex flex-col items-center justify-center gap-2 sm:gap-3
+                transition-all duration-300
+                cursor-pointer
+                ${borderColorClass}
+                ${shadowClass}
+              `}
                                     whileHover={{ scale: 1.05 }}
                                 >
-                                    {/* Icon */}
-                                    <div className={`text-5xl ${accentColorClass} transition-all duration-300 group-hover:scale-110 group-hover:rotate-12`}>
+                                    <div className={`text-2xl sm:text-3xl md:text-4xl ${accentColorClass} transition-all duration-300 group-hover:scale-110 group-hover:rotate-12`}>
                                         <skill.icon />
                                     </div>
 
-                                    {/* Skill Name */}
-                                    <h3 className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-white transition-colors text-center">
+                                    <h3 className="text-[0.6rem] sm:text-xs md:text-sm font-bold uppercase tracking-[0.15em] text-gray-400 group-hover:text-white transition-colors text-center">
                                         {skill.name}
                                     </h3>
                                 </motion.div>
@@ -164,6 +160,7 @@ const SkillsGrid = () => {
                 </motion.div>
             </div>
         </section>
+
     );
 };
 
