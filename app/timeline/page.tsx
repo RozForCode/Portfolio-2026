@@ -95,16 +95,29 @@ export default function TimelinePage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-background text-foreground py-20 px-4 overflow-hidden">
-            <h1 className="text-4xl md:text-6xl font-bold text-center mb-20 text-orchid">
+        <main className="min-h-screen bg-background text-foreground pt-30 pb-70 px-4 overflow-hidden">
+            <div className="
+                text-4xl md:text-6xl
+                font-semibold
+                text-center
+                mb-24
+                bg-gradient-to-r from-timelineHeader via-cyan to-timelineHeader
+                bg-clip-text text-transparent
+                tracking-tight
+                pb-2
+                
+                gradient-animate
+            ">
                 Experience Timeline
-            </h1>
+            </div>
 
-            <div ref={containerRef} className="relative max-w-4xl mx-auto pt-8 pb-0">
+
+
+            <div ref={containerRef} className="relative max-w-4xl mx-auto pt-6 pb-0">
                 {/* Central Line */}
                 <div
                     ref={lineRef}
-                    className="absolute left-1/2 top-16 bottom-0 w-1 bg-gradient-to-b from-orchid via-cyan to-orchid-dark transform -translate-x-1/2 origin-top"
+                    className="absolute left-1/2 top-16 bottom-16 w-1 bg-gradient-to-b from-orchid via-cyan to-orchid-dark transform -translate-x-1/2 origin-top"
                 />
 
                 <div className="flex flex-col gap-20">

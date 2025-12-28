@@ -27,12 +27,14 @@ textarea {
   --color-orchid: var(--orchid);
   --color-orchid-dark: var(--orchid-dark);
   --color-cyan: var(--cyan);
+  --color-timelineHeader: var(--timelineHeader);
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
 :root {
+  --timelineHeader: #ff1bff;
   --background: #0a0a0a;
   --foreground: #ededed;
   --orchid: #da70d6;
@@ -113,4 +115,25 @@ h2 {
   overflow: hidden;
   z-index: 10;
   pointer-events: none;
+}
+
+
+/* timeline page header */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradient-move 4s ease infinite;
 }

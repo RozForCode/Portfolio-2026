@@ -33,10 +33,21 @@ const projects = [
 
 export default function ProjectsPage() {
     return (
-        <main className="min-h-screen bg-background text-foreground py-20 px-4">
-            <h1 className="text-4xl md:text-6xl font-bold text-center mb-16 text-cyan">
+        <main className="min-h-screen bg-background text-foreground pt-30 pb-70 px-4">
+            <div className="
+                text-4xl md:text-6xl
+                font-semibold
+                text-center
+                mb-24
+                bg-gradient-to-r from-timelineHeader via-cyan to-timelineHeader
+                bg-clip-text text-transparent
+                tracking-tight
+                pb-2
+                
+                gradient-animate
+            ">
                 Selected Projects
-            </h1>
+            </div>
 
             <motion.div
                 className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8"
