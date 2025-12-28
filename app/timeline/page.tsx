@@ -6,6 +6,14 @@ import { cn } from "@/lib/utils";
 
 const experiences = [
     {
+        year: "2026",
+        period: "Jan 2026 – Apr 2026",
+        title: "Services Analyst (Co-op)",
+        company: "Ontario Public Service<br /> Ministry of Business and Public Service Delivery and Procurement (IT&T Cluster, EPCS)",
+        description:
+            "Supporting enterprise-level projects and cloud solutions within the Enterprise Projects and Cloud Solutions (EPCS) division, contributing to service analysis, IT operations, and cloud-based initiatives across the OPS.",
+    },
+    {
         year: "2025",
         period: "Nov 2025 – Present",
         title: "Technology Team Member",
@@ -92,11 +100,11 @@ export default function TimelinePage() {
                 Experience Timeline
             </h1>
 
-            <div ref={containerRef} className="relative max-w-4xl mx-auto">
+            <div ref={containerRef} className="relative max-w-4xl mx-auto pt-8 pb-0">
                 {/* Central Line */}
                 <div
                     ref={lineRef}
-                    className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-orchid via-cyan to-orchid-dark transform -translate-x-1/2 origin-top"
+                    className="absolute left-1/2 top-16 bottom-0 w-1 bg-gradient-to-b from-orchid via-cyan to-orchid-dark transform -translate-x-1/2 origin-top"
                 />
 
                 <div className="flex flex-col gap-20">
@@ -125,7 +133,7 @@ export default function TimelinePage() {
                                 )}
                             </div>
                             <h3 className="text-2xl font-bold text-white mt-2">{exp.title}</h3>
-                            <h4 className="text-orchid text-lg mb-4">{exp.company}</h4>
+                            <h4 className="text-orchid text-lg mb-4" dangerouslySetInnerHTML={{ __html: exp.company }}></h4>
                             <p className="text-gray-400">{exp.description}</p>
                         </div>
                     ))}
