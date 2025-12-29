@@ -1,152 +1,169 @@
-// "use client";
-
-// import { useEffect, useState } from "react";
-// import { motion, useMotionValue, useSpring } from "framer-motion";
-
-// export default function CustomCursor() {
-//     const [isVisible, setIsVisible] = useState(false);
-
-//     // Raw mouse positions
-//     const mouseX = useMotionValue(0);
-//     const mouseY = useMotionValue(0);
-
-//     // Main cursor spring (snappy)
-//     const mainSpring = { damping: 20, stiffness: 700, mass: 0.5 };
-//     const cursorX = useSpring(mouseX, mainSpring);
-//     const cursorY = useSpring(mouseY, mainSpring);
-
-//     // Trail cursor spring (looser -> lags behind)
-//     const trailSpring = { damping: 30, stiffness: 220, mass: 0.9 };
-//     const cursorXTrail = useSpring(mouseX, trailSpring);
-//     const cursorYTrail = useSpring(mouseY, trailSpring);
-
-//     useEffect(() => {
-//         const moveCursor = (e: MouseEvent) => {
-//             mouseX.set(e.clientX);
-//             mouseY.set(e.clientY);
-//             if (!isVisible) setIsVisible(true);
-//         };
-
-//         const handleMouseEnter = () => setIsVisible(true);
-//         const handleMouseLeave = () => setIsVisible(false);
-
-//         window.addEventListener("mousemove", moveCursor);
-//         document.body.addEventListener("mouseenter", handleMouseEnter);
-//         document.body.addEventListener("mouseleave", handleMouseLeave);
-
-//         return () => {
-//             window.removeEventListener("mousemove", moveCursor);
-//             document.body.removeEventListener("mouseenter", handleMouseEnter);
-//             document.body.removeEventListener("mouseleave", handleMouseLeave);
-//         };
-//     }, [mouseX, mouseY, isVisible]);
-
-//     if (!isVisible) return null;
-
-//     return (
-//         <>
-//             {/* TRAIL (lagging) */}
-//             <motion.img
-//                 src="/cursors/purpleCursorPointer2.png"
-//                 className="fixed top-0 left-0 pointer-events-none z-[9998] w-8 h-8 blur-sm"
-//                 style={{
-//                     x: cursorXTrail,
-//                     y: cursorYTrail,
-//                     translateX: "-50%",
-//                     translateY: "-50%",
-//                     // make trail slightly bigger and dimmer
-//                     scale: 1.15,
-//                     opacity: 0.45,
-//                 }}
-//                 animate={{
-//                     // gentle pulse on the trail so it feels alive but subtle
-//                     opacity: [0.5, 0.7, 0.5],
-//                 }}
-//                 transition={{ duration: 1.2, repeat: Infinity }}
-//             />
-
-//             {/* MAIN CURSOR (snappy) */}
-//             <motion.img
-//                 src="/cursors/purpleCursorPointer2.png"
-//                 alt="Custom Cursor"
-//                 animate={{ scale: [0.9, 1.1, 0.9], rotate: [0, 3, -3, 0] }}
-//                 transition={{ duration: 1.3, repeat: Infinity }}
-//                 className="fixed top-0 left-0 pointer-events-none z-9999 w-8 h-8"
-//                 style={{
-//                     x: cursorX,
-//                     y: cursorY,
-//                     translateX: "-50%",
-//                     translateY: "-50%",
-//                     filter: "drop-shadow(0px 0px 6px #d400ff) saturate(140%)",
-//                 }}
-//             />
-//         </>
-//     );
-// }
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function CustomCursor() {
-  const [isVisible, setIsVisible] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const amount = 20;
+  const width = 26;
+  const idleTimeout = 150;
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const mainSpring = { damping: 20, stiffness: 700, mass: 0.5 };
-  const cursorX = useSpring(mouseX, mainSpring);
-  const cursorY = useSpring(mouseY, mainSpring);
-
-  const trailSpring = { damping: 30, stiffness: 220, mass: 0.9 };
-  const cursorXTrail = useSpring(mouseX, trailSpring);
-  const cursorYTrail = useSpring(mouseY, trailSpring);
+  // Use refs for mutable state to avoid re-renders
+  const mousePosition = useRef({ x: 0, y: 0 });
+  const dotsRef = useRef<any[]>([]);
+  const idleTimeoutId = useRef<NodeJS.Timeout | null>(null);
+  const idle = useRef(false);
 
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-      if (!isVisible) setIsVisible(true);
+    // Clear previous dots if any
+    if (cursorRef.current) {
+      cursorRef.current.innerHTML = '';
+      dotsRef.current = [];
+    }
+
+    class Dot {
+      index: number;
+      anglespeed: number;
+      x: number;
+      y: number;
+      scale: number;
+      range: number;
+      element: HTMLSpanElement;
+      lockX: number = 0;
+      lockY: number = 0;
+      angleX: number = 0;
+      angleY: number = 0;
+
+      constructor(index: number = 0) {
+        this.index = index;
+        this.anglespeed = 0.05;
+        this.x = 0;
+        this.y = 0;
+        this.scale = 1 - 0.05 * index;
+        this.range = width / 2 - (width / 2) * this.scale + 2;
+        this.element = document.createElement("span");
+
+        // Add styles directly to span or via class
+        this.element.style.position = 'absolute';
+        this.element.style.display = 'block';
+        this.element.style.width = '26px';
+        this.element.style.height = '26px';
+        this.element.style.borderRadius = '50%';
+        this.element.style.backgroundColor = 'white'; // Or your theme color
+        this.element.style.transformOrigin = 'center center';
+        this.element.style.transform = 'translate(-50%, -50%)';
+        // Optional: mix-blend-mode: difference; if you want that effect
+        // this.element.style.mixBlendMode = 'difference';
+
+        gsap.set(this.element, { scale: this.scale });
+        cursorRef.current?.appendChild(this.element);
+      }
+
+      lock() {
+        this.lockX = this.x;
+        this.lockY = this.y;
+        this.angleX = Math.PI * 2 * Math.random();
+        this.angleY = Math.PI * 2 * Math.random();
+      }
+
+      draw() {
+        if (!idle.current || this.index <= 6) {
+          gsap.set(this.element, { x: this.x, y: this.y });
+        } else {
+          this.angleX += this.anglespeed;
+          this.angleY += this.anglespeed;
+          this.y = this.lockY + Math.sin(this.angleY) * this.range;
+          this.x = this.lockX + Math.sin(this.angleX) * this.range;
+          gsap.set(this.element, { x: this.x, y: this.y });
+        }
+      }
+    }
+
+    const mouseMoveHandler = (e: MouseEvent) => {
+      mousePosition.current.x = e.clientX;
+      mousePosition.current.y = e.clientY;
+      idle.current = false;
+
+      if (idleTimeoutId.current) {
+        clearTimeout(idleTimeoutId.current);
+      }
+
+      idleTimeoutId.current = setTimeout(() => {
+        idle.current = true;
+        dotsRef.current.forEach((d) => d.lock());
+      }, idleTimeout);
     };
 
-    window.addEventListener("mousemove", moveCursor);
+    window.addEventListener("mousemove", mouseMoveHandler);
 
-    return () => window.removeEventListener("mousemove", moveCursor);
-  }, [mouseX, mouseY, isVisible]);
+    // Initialize dots
+    for (let i = 0; i < amount; i++) {
+      dotsRef.current.push(new Dot(i));
+    }
+
+    // Render loop
+    const render = () => {
+      let x = mousePosition.current.x;
+      let y = mousePosition.current.y;
+
+      dotsRef.current.forEach((dot, index) => {
+        dot.x = x;
+        dot.y = y;
+        dot.draw();
+
+        if (!idle.current || index <= 6) {
+          const nextDot = dotsRef.current[index + 1] || dotsRef.current[0];
+          x += (nextDot.x - dot.x) * 0.35;
+          y += (nextDot.y - dot.y) * 0.35;
+        }
+      });
+    };
+
+    // Add GSAP ticker for performance instead of requestAnimationFrame loop manually
+    gsap.ticker.add(render);
+
+    return () => {
+      window.removeEventListener("mousemove", mouseMoveHandler);
+      if (idleTimeoutId.current) clearTimeout(idleTimeoutId.current);
+      gsap.ticker.remove(render);
+      if (cursorRef.current) cursorRef.current.innerHTML = '';
+    };
+  }, []);
 
   return (
     <>
-      {/* TRAIL */}
-      <motion.img
-        src="/cursors/purpleCursorPointer2.png"
-        className="fixed top-0 left-0 pointer-events-none z-[9998] w-8 h-8 blur-sm"
-        style={{
-          x: cursorXTrail,
-          y: cursorYTrail,
-          translateX: "-50%",
-          translateY: "-50%",
-          scale: 1.15,
-          opacity: isVisible ? 0.45 : 0,
-        }}
-        animate={{ opacity: [0.5, 0.7, 0.5] }}
-        transition={{ duration: 1.2, repeat: Infinity }}
-      />
+      {/* SVG Filters */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+        style={{ display: "none" }}
+      >
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="6"
+              result="blur"
+            />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15"
+              result="goo"
+            />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
 
-      {/* MAIN CURSOR */}
-      <motion.img
-        src="/cursors/purpleCursorPointer2.png"
-        alt="Custom Cursor"
-        className="fixed top-0 left-0 pointer-events-none z-[9999] w-8 h-8"
-        style={{
-          x: cursorX,
-          y: cursorY,
-          translateX: "-50%",
-          translateY: "-50%",
-          filter: "drop-shadow(0px 0px 6px #d400ff) saturate(140%)",
-        }}
-        animate={{ scale: [0.9, 1.1, 0.9], rotate: [0, 3, -3, 0] }}
-        transition={{ duration: 1.3, repeat: Infinity }}
+      {/* Main Cursor Container */}
+      <div
+        ref={cursorRef}
+        className="fixed top-0 left-0 z-[10000] pointer-events-none"
+        style={{ filter: 'url("#goo")' }}
       />
     </>
   );
 }
+

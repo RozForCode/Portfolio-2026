@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 body,
-#__next {
+#__next,
+html {
   cursor: none !important;
 }
 
