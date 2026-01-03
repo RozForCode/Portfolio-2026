@@ -26,7 +26,7 @@ const projects: ProjectData[] = [
             "AI-powered skill progression tracker and learning roadmap generator.",
         longDescription:
             "Built with Ionic Angular. Generates personalized learning paths based on user skill level and experience, with AI-assisted guidance and adaptive recommendations.",
-        image: "/projects/learnstream.jpg",
+        image: "/projects/learnstream.png",
         tags: ["Ionic", "Angular", "AI", "UX Design"],
     },
     {
@@ -35,7 +35,7 @@ const projects: ProjectData[] = [
             "Browser-playable Unity game embedded via WebGL.",
         longDescription:
             "Developed multiple games in Unity using C#. Exported WebGL builds and embedded them into a custom website to demonstrate gameplay and performance on the web.",
-        image: "/projects/takeover.jpg",
+        image: "/projects/Unity-Logo.jpeg",
         tags: ["Unity", "C#", "WebGL", "Game Design"],
     },
     {
@@ -44,7 +44,7 @@ const projects: ProjectData[] = [
             "Collection of native Windows and cross-platform apps built with .NET.",
         longDescription:
             "Developed multiple desktop and mobile applications using .NET and MAUI, focusing on native APIs, performance, and clean architecture. Source code available on GitHub.",
-        image: "/projects/maui.jpg",
+        image: "/projects/maui.png",
         tags: [".NET", "MAUI", "C#", "Windows"],
         links: {
             // github: "https://github.com/...", // Add real link if available
@@ -56,7 +56,7 @@ const projects: ProjectData[] = [
             "Containerized data mining pipeline for Canadian emissions analytics.",
         longDescription:
             "Created a Dockerized Ionic Angular application that collects native device data (e.g., geolocation) and feeds it into an API for emissions-based insights. Tracks corporate net emissions across Canada.",
-        image: "/projects/co2.jpg",
+        image: "/projects/docker.webp",
         tags: ["Docker", "Data Mining", "Ionic", "APIs"],
         links: {
             // docker: "https://hub.docker.com/...", // Add real link if available
@@ -68,7 +68,7 @@ const projects: ProjectData[] = [
             "End-to-end analytics pipeline using AI-generated enterprise data.",
         longDescription:
             "Simulated a real manufacturing company using AI-generated data covering inventory, quality metrics, and dynamic pricing. Built analytics workflows to extract insights and trends.",
-        image: "/projects/manufacturing.jpg",
+        image: "/projects/data.jpg",
         tags: ["Data Analytics", "Pipelines", "AI Data", "Business Intelligence"],
     },
 ];
