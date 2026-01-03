@@ -12,10 +12,10 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
     return (
         <motion.div
             layoutId={`project-${project.title}`}
-            className="group relative w-full h-[400px] rounded-2xl overflow-hidden cursor-pointer bg-gray-900 border border-white/5 hover:border-orchid/50 transition-colors"
+            className="group relative w-full h-[500px] rounded-2xl overflow-hidden cursor-pointer bg-gray-900 border border-white/5 hover:border-orchid/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(218,112,214,0.4)]"
             onClick={() => onClick(project)}
-            whileHover={{ y: -5 }}
-            transition={{ duration: 0.2 }}
+            whileHover={{ y: -10 }}
+            transition={{ duration: 0.3 }}
         >
             {/* Background Image */}
             <div className="absolute inset-0">
@@ -26,13 +26,13 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
                     <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500 scale-100 group-hover:scale-105 transform"
+                        className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 scale-100 group-hover:scale-110 transform"
                     />
                 )}
             </div>
 
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90" />
+            {/* Gradient Overlay - lighter at top to show image */}
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent opacity-80" />
 
             {/* Content Content - Always visible for quick scanning as requested */}
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
