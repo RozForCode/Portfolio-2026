@@ -12,7 +12,7 @@ export function JellyButton({ children, className, ...props }: JellyButtonProps)
     return (
         <motion.button
             className={cn(
-                "relative px-8 py-4 rounded-full bg-orchid text-white font-bold text-lg overflow-hidden shadow-lg",
+                "relative px-8 py-4 rounded-full bg-cyan text-black font-bold text-lg overflow-hidden shadow-lg",
                 "hover:bg-orchid-dark transition-colors duration-300",
                 className
             )}

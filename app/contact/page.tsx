@@ -13,19 +13,19 @@ export default function ContactPage() {
                 initial="hidden"
                 animate="visible"
             >
-                <motion.h1
-                    className="text-4xl md:text-6xl font-bold text-center mb-8 text-white"
-                    variants={slideUp}
-                >
+                <div className="
+                text-4xl md:text-6xl
+                font-semibold
+                text-center
+                mb-24
+                bg-gradient-to-r from-timelineHeader via-cyan to-timelineHeader
+                bg-clip-text text-transparent
+                tracking-tight
+                pt-10
+                pb-0
+                gradient-animate">
                     Let's Connect
-                </motion.h1>
-
-                <motion.p
-                    className="text-center text-gray-400 mb-12 text-lg"
-                    variants={slideUp}
-                >
-                    Have a project in mind or just want to say hi? I'm always open to new opportunities and collaborations.
-                </motion.p>
+                </div>
 
                 <motion.form className="space-y-6" variants={fadeIn}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

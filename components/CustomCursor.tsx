@@ -50,7 +50,11 @@ export default function CustomCursor() {
         this.element.style.width = '26px';
         this.element.style.height = '26px';
         this.element.style.borderRadius = '50%';
-        this.element.style.backgroundColor = 'white'; // Or your theme color
+
+
+        this.element.style.mixBlendMode = 'multiply';
+        // this.element.style.backgroundColor = '#55f9ffff'; 
+        this.element.style.backgroundColor = 'var(--orchid)'; // Or your theme color
         this.element.style.transformOrigin = 'center center';
         this.element.style.transform = 'translate(-50%, -50%)';
         // Optional: mix-blend-mode: difference; if you want that effect
