@@ -18,8 +18,8 @@ export default function Home() {
 
       <div className={styles.content}>
         <div className={styles.titleWrapper}>
-          <h2 className={styles.titleStroke}>Navrose S. Johal</h2>
-          <h2 className={styles.titleFill}>Navrose S. Johal</h2>
+          <h2 className={styles.titleStroke}>Navrose Singh Johal</h2>
+          <h2 className={styles.titleFill}>Navrose Singh Johal</h2>
         </div>
 
 
